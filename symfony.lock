@@ -41,8 +41,23 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99.1"
     },
+    "dama/doctrine-test-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "4.0",
+            "ref": "56eaa387b5e48ebcc7c95a893b47dfa1ad51449c"
+        },
+        "files": [
+            "./config/packages/test/dama_doctrine_test_bundle.yaml"
+        ]
+    },
     "daverandom/libdns": {
         "version": "v2.0.2"
+    },
+    "dbrekelmans/bdi": {
+        "version": "0.3"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -65,6 +80,9 @@
     "doctrine/common": {
         "version": "3.1.2"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.5.0"
+    },
     "doctrine/dbal": {
         "version": "2.13.1"
     },
@@ -85,6 +103,18 @@
             "./config/packages/test/doctrine.yaml",
             "./src/Entity/.gitignore",
             "./src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "e5b542d4ef47d8a003c91beb35650c76907f7e53"
+        },
+        "files": [
+            "./src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -165,6 +195,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.10.4"
+    },
+    "php-webdriver/webdriver": {
+        "version": "1.10.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -404,6 +437,15 @@
     },
     "symfony/orm-pack": {
         "version": "v2.1.0"
+    },
+    "symfony/panther": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "93d9baa582d0a755cc9ef81bc38a921d5fa16973"
+        }
     },
     "symfony/phpunit-bridge": {
         "version": "5.1",

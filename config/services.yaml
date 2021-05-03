@@ -10,6 +10,9 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $photoDir: "%kernel.project_dir%/public/uploads/photos"
+            $akismetKey: "%env(AKISMET_KEY)%"
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -29,3 +32,21 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    Redis:
+        class: Redis
+        calls:
+            - connect:
+                  - '%env(REDIS_HOST)%'
+                  - '%env(int:REDIS_PORT)%'
+            - auth:
+                  - '%env(REDIS_PASSWORD)%'
+
+    Symfony\Component\HttpFoundation\Session\Storage\Handler\RedisSessionHandler:
+        arguments:
+            - '@Redis'
+
+    App\EntityListener\ConferenceEntityListener:
+        tags:
+            - { name: 'doctrine.orm.entity_listener', event: 'prePersist', entity: 'App\Entity\Conference' }
+            - { name: 'doctrine.orm.entity_listener', event: 'preUpdate', entity: 'App\Entity\Conference' }

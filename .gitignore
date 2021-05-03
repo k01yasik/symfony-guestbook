@@ -5,9 +5,15 @@
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
+/config/secrets/prod/prod.encrypt.public.php
+/config/secrets/dev/dev.decrypt.private.php
+/config/secrets/dev/dev.encrypt.public.php
+/config/secrets/test/test.decrypt.private.php
+/config/secrets/test/test.encrypt.public.php
 /public/bundles/
 /var/
 /vendor/
+/public/uploads
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

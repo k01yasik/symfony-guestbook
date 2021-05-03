@@ -5,7 +5,7 @@
 {% block body %}
     <h2>{{ conference }}</h2>
     {% if comments|length > 0 %}
-        <div>There are {{ comments|length }} comments.</div>
+        <div class="total__comments">There are {{ comments|length }} comments.</div>
         {% for comment in comments %}
             {% if comment.photofilename %}
                 <img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" />
@@ -15,12 +15,16 @@
             <p>{{comment.text|striptags|title}}</p>
         {% endfor %}
         {% if previous >= 0 %}
-            <a href="{{ path('conference', {id: conference.id, offset: previous}) }}">Previous</a>
+            <a href="{{ path('conference', {slug: conference.slug, offset: previous}) }}">Previous</a>
         {% endif %}
         {% if next < comments|length %}
-            <a href="{{ path('conference', {id: conference.id, offset: next}) }}">Next</a>
+            <a href="{{ path('conference', {slug: conference.slug, offset: next}) }}">Next</a>
         {% endif %}
     {% else %}
         <div>No comments have been posted yet for this conference.</div>
     {% endif %}
+
+    <h2>Add your own feedback</h2>
+
+    {{ form(comment_form) }}
 {% endblock %}
