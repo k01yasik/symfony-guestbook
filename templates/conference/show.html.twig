@@ -7,12 +7,18 @@
     {% if comments|length > 0 %}
         <div class="total__comments">There are {{ comments|length }} comments.</div>
         {% for comment in comments %}
-            {% if comment.photofilename %}
-                <img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" />
-            {% endif %}
-            <h4>{{ comment.author }}</h4>
-            <small>{{ comment.createdAt|format_datetime('medium', 'short') }}</small>
-            <p>{{comment.text|striptags|title}}</p>
+            <div class="comment__block">
+                {% if comment.photofilename %}
+                    <div class="avatar">
+                        <img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" />
+                    </div>
+                {% endif %}
+                <div class="user__info">
+                    <h4>{{ comment.author }}</h4>
+                    <small>{{ comment.createdAt|format_datetime('medium', 'short') }}</small>
+                    <p>{{comment.text|striptags|title}}</p>
+                </div>
+            </div>
         {% endfor %}
         {% if previous >= 0 %}
             <a href="{{ path('conference', {slug: conference.slug, offset: previous}) }}">Previous</a>
