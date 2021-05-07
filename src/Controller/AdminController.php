@@ -30,8 +30,9 @@ class AdminController extends AbstractController
      * @param Comment $comment
      * @param Registry $registry
      * @Route("/admin/comment/review/{id}", name="review_comment")
+     * @return Response
      */
-    public function reviewComment(Request $request, Comment $comment, Registry $registry)
+    public function reviewComment(Request $request, Comment $comment, Registry $registry): Response
     {
         $accepted = !$request->query->get('reject');
 
