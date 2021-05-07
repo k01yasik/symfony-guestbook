@@ -4,6 +4,7 @@
 /.env.local
 /.env.local.php
 /.env.*.local
+/erl_crash.dump
 /config/secrets/prod/prod.decrypt.private.php
 /config/secrets/prod/prod.encrypt.public.php
 /config/secrets/dev/dev.decrypt.private.php
