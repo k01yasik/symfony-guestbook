@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea67e4a21fadff2b727151f836c8b95c",
+    "content-hash": "b925a1b681e069e9aa54c3029cfaba14",
     "packages": [
         {
             "name": "amphp/amp",
@@ -4008,16 +4008,16 @@
         },
         {
             "name": "symfony/cache",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/cache.git",
-                "reference": "093d69bb10c959553c8beb828b8d4ea250a247dd"
+                "reference": "1d801d1dc5e3840e832568db6b35a954cfb435a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/cache/zipball/093d69bb10c959553c8beb828b8d4ea250a247dd",
-                "reference": "093d69bb10c959553c8beb828b8d4ea250a247dd",
+                "url": "https://api.github.com/repos/symfony/cache/zipball/1d801d1dc5e3840e832568db6b35a954cfb435a8",
+                "reference": "1d801d1dc5e3840e832568db6b35a954cfb435a8",
                 "shasum": ""
             },
             "require": {
@@ -4083,7 +4083,7 @@
                 "psr6"
             ],
             "support": {
-                "source": "https://github.com/symfony/cache/tree/v5.2.6"
+                "source": "https://github.com/symfony/cache/tree/v5.2.7"
             },
             "funding": [
                 {
@@ -4099,7 +4099,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-16T09:10:13+00:00"
+            "time": "2021-04-23T16:56:33+00:00"
         },
         {
             "name": "symfony/cache-contracts",
@@ -7319,16 +7319,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.2.4",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "313a38f09c77fbcdc1d223e57d368cea76a2fd2f"
+                "reference": "98cb8eeb72e55d4196dd1e36f1f16e7b3a9a088e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/313a38f09c77fbcdc1d223e57d368cea76a2fd2f",
-                "reference": "313a38f09c77fbcdc1d223e57d368cea76a2fd2f",
+                "url": "https://api.github.com/repos/symfony/process/zipball/98cb8eeb72e55d4196dd1e36f1f16e7b3a9a088e",
+                "reference": "98cb8eeb72e55d4196dd1e36f1f16e7b3a9a088e",
                 "shasum": ""
             },
             "require": {
@@ -7361,7 +7361,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v5.2.4"
+                "source": "https://github.com/symfony/process/tree/v5.3.0-BETA1"
             },
             "funding": [
                 {
@@ -7377,7 +7377,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-27T10:15:41+00:00"
+            "time": "2021-04-08T10:27:02+00:00"
         },
         {
             "name": "symfony/property-access",
