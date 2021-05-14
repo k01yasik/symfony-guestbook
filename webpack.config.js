@@ -1,4 +1,6 @@
 const Encore = require('@symfony/webpack-encore');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -21,6 +23,7 @@ Encore
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('spa', './spa/src/app.js')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
@@ -31,6 +34,8 @@ Encore
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
+
+    .enablePreactPreset()
 
     /*
      * FEATURE CONFIG
@@ -58,6 +63,11 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
+    .addPlugin(new HtmlWebpackPlugin({ template: 'spa/src/index.ejs', alwaysWriteToDisk: true}))
+
+    .addPlugin(new webpack.DefinePlugin({
+        'ENV_API_ENDPOINT': JSON.stringify("http://guestbook/"),
+    }))
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
 
