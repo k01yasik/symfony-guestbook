@@ -3,40 +3,49 @@
 {% block title %}Conference Guestbook - {{ conference }}{% endblock %}
 
 {% block body %}
-    {% for message in app.flashes('notification') %}
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
-    <h2>{{ conference }}</h2>
-    {% if comments|length > 0 %}
-        <div class="total__comments">There are {{ comments|length }} comments.</div>
-        {% for comment in comments %}
-            <div class="comment__block">
-                {% if comment.photofilename %}
-                    <div class="avatar">
-                        <img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" />
-                    </div>
-                {% endif %}
-                <div class="user__info">
-                    <h4>{{ comment.author }}</h4>
-                    <small>{{ comment.createdAt|format_datetime('medium', 'short') }}</small>
-                    <p>{{comment.text|striptags|title}}</p>
+    <div class="row">
+        <div class="col-12">
+            {% for message in app.flashes('notification') %}
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-            </div>
-        {% endfor %}
-        {% if previous >= 0 %}
-            <a href="{{ path('conference', {slug: conference.slug, offset: previous}) }}">Previous</a>
-        {% endif %}
-        {% if next < comments|length %}
-            <a href="{{ path('conference', {slug: conference.slug, offset: next}) }}">Next</a>
-        {% endif %}
-    {% else %}
-        <div>No comments have been posted yet for this conference.</div>
-    {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <h2 class="text-center">{{ conference }}</h2>
+            {% if comments|length > 0 %}
+                <div class="total__comments">The are {{ comments|length }} comments.</div>
+                {% for comment in comments %}
+                    <div class="comment__block">
+                        {% if comment.photofilename %}
+                            <div class="avatar">
+                                <img src="{{ asset('uploads/photos/' ~ comment.photofilename) }}" />
+                            </div>
+                        {% endif %}
+                        <div class="user__info">
+                            <h4>{{ comment.author }}</h4>
+                            <small>{{ comment.createdAt|format_datetime('medium', 'short') }}</small>
+                            <p>{{comment.text|striptags|title}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if previous >= 0 %}
+                    <a href="{{ path('conference', {slug: conference.slug, offset: previous}) }}">Previous</a>
+                {% endif %}
+                {% if next < comments|length %}
+                    <a href="{{ path('conference', {slug: conference.slug, offset: next}) }}">Next</a>
+                {% endif %}
+            {% else %}
+                <div>No comments have been posted yet for this conference.</div>
+            {% endif %}
+        </div>
+        <div class="col-4">
+            <h2>Add your own feedback</h2>
 
-    <h2>Add your own feedback</h2>
-
-    {{ form(comment_form) }}
+            {{ form(comment_form) }}
+        </div>
+    </div>
 {% endblock %}

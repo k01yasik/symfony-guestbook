@@ -11,6 +11,7 @@ use App\Repository\ConferenceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -36,7 +37,13 @@ class ConferenceController extends AbstractController
         $this->bus = $bus;
     }
 
-    #[Route('/', name: 'homepage')]
+    #[Route("/")]
+    public function indexNoLocale(): RedirectResponse
+    {
+        return $this->redirectToRoute('homepage', ['_locale' => 'ru']);
+    }
+
+    #[Route("/{_locale<%app.supported_locales%>}/", name: 'homepage')]
     public function index(ConferenceRepository $conferenceRepository): Response
     {
         $response = new Response($this->twig->render('conference/index.html.twig', [
@@ -53,7 +60,7 @@ class ConferenceController extends AbstractController
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
-     * @Route("/conference/header", name="conference_header")
+     * @Route("/{_locale<%app.supported_locales%>}/conference/header", name="conference_header")
      */
     public function conferenceHeader(ConferenceRepository $conferenceRepository): Response
     {
@@ -68,7 +75,7 @@ class ConferenceController extends AbstractController
         return $response;
     }
 
-    #[Route("/conference/{slug}", name: "conference")]
+    #[Route("/{_locale<%app.supported_locales%>}/conference/{slug}", name: "conference")]
     public function show(Request $request,
                          Conference $conference,
                          CommentRepository $commentRepository,

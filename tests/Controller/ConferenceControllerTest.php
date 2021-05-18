@@ -12,7 +12,7 @@ class ConferenceControllerTest extends PantherTestCase
     public function testIndex()
     {
         $client = static::createPantherClient();
-        $client->request('GET', $_SERVER['SYMFONY_DEFAULT_ROUTE_URL']);
+        $client->request('GET', $_SERVER['SYMFONY_DEFAULT_ROUTE_URL'].'ru/');
 
         $this->assertSelectorTextContains('h2', 'Give your feedback');
     }
@@ -20,7 +20,7 @@ class ConferenceControllerTest extends PantherTestCase
     public function testCommentSubmission()
     {
         $client = static::createPantherClient();
-        $client->request('GET', $_SERVER['SYMFONY_DEFAULT_ROUTE_URL'].'conference/amsterdam-2019');
+        $client->request('GET', $_SERVER['SYMFONY_DEFAULT_ROUTE_URL'].'ru/conference/amsterdam-2019');
         $client->submitForm('Submit', [
             'comment_form[author]' => 'Fabien',
             'comment_form[text]' => 'Some feedback from an automated functional test',
@@ -38,7 +38,7 @@ class ConferenceControllerTest extends PantherTestCase
     public function testConferencePage()
     {
         $client = static::createPantherClient();
-        $crawler = $client->request('GET', $_SERVER['SYMFONY_DEFAULT_ROUTE_URL']);
+        $crawler = $client->request('GET', $_SERVER['SYMFONY_DEFAULT_ROUTE_URL'].'ru/');
 
         $this->assertCount(2, $crawler->filter('h4'));
 
